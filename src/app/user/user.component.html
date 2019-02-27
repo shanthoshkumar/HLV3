@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body style="background-color:rgb(240, 240, 240);" >
+<br>
+       <div class="container" style="background:white;height:220px;width:1200px;">
+          <nav class=" navbar container" ><br>
+           <div>
+                
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+
+                   
+                    <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+
+                               <label for="account"><h4>Ether Balance:</h4><input type="text"  class="form-control" id="bal" value="{{ balance }}" readonly/></label> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+
+                   <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#purchase" style="padding: 8px 30px" class="button1 zoom" >Purchase Token</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#selltoken" style="padding: 8px 20px"class="button1 zoom" >Convert Token to Ether</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#betting" style="padding: 8px 30px" class="button1 zoom" >Bet</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#increase" style="padding: 8px 30px" class="button1 zoom" >Increase Bet</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#decrease" style="padding: 8px 30px" class="button1 zoom" >Decrease Bet</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#exit" style="padding: 8px 30px" class="button1 zoom" >Exit bet</Button>
+
+
+
+         </div>   
+</nav>
+</div>
+<!--BET POPUP-->
+<div class="modal fade" id="betting" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header" style="background: #1affff">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >Bet</h4>         
+      </div>
+      <div class="modal-body" >
+          <input type="text" class="shadow" placeholder="Enter game id" #betting>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose Token or Ether</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select #myselect>
+          <option value="0">Ether</option>
+          <option value="1">Token</option>
+      </select><br><br>
+      <input type="text" class="shadow" placeholder="Enter the Amount" #bet_input>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose Your Option</p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select #bet_choice>
+          <option value="0">Low</option>
+          <option value="1">High</option>
+      </select>
+      </div>
+     
+      <div class="modal-footer" >
+        <button type="button" class="success" data-dismiss="modal" aria-hidden="true" (click)="bt(myselect.value,betting.value,bet_choice.value,bet_input.value)">Bet</button>
+        <button type="button" class="danger"  data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--Increase BEt POPUP-->
+<div class="modal fade" id="increase" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-header" style="background: #1affff">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Increase</h4>         
+        </div>
+        
+        <div class="modal-body" >
+          <p>Increase Bet Amount</p>
+          <br>
+        <input type="text" class="shadow" placeholder="Enter bet id" #bet>
+          <br>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose Token or Ether</p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select #inc_choice>
+              <option value="0">Ether</option>
+              <option value="1">Token</option>
+          </select><br><br><br>
+        <input type="text" class="shadow" placeholder="Enter the amount" #amout>
+        
+      </div>
+       
+        <div class="modal-footer" >
+          <button type="button" class="success" data-dismiss="modal" aria-hidden="true" (click)="inc(inc_choice.value,bet.value,amout.value)">Increase</button>
+          <button type="button" class="danger"  data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!--Decrase BEt POPUP-->
+<div class="modal fade" id="decrease" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header" style="background: #1affff">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >Decrease</h4>         
+      </div>
+      <div class="modal-body" >
+        <p>Decrease Bet Amount</p><br>
+        <br>
+      <input type="text" class="shadow" placeholder="Enter bet id" #betid>
+      <br>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose Token or Ether</p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select #dec_choice>
+          <option value="0">Ether</option>
+          <option value="1">Token</option>
+      </select><br><br><br>
+  
+      <input type="text" class="shadow" placeholder="Enter the amount" #amt>
+      
+    </div>
+     
+      <div class="modal-footer" >
+        <button type="button" class="success" data-dismiss="modal" aria-hidden="true" (click)="dec(dec_choice.value,betid.value,amt.value)">Decrease</button>
+        <button type="button" class="danger"  data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Exit BEt POPUP-->
+  <div class="modal fade" id="exit" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-header" style="background: #1affff">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Exit</h4>         
+        </div>
+        
+        <div class="modal-body" >
+       
+          
+        <input type="text" class="shadow" placeholder="Enter bet id" #bet_id>        
+      </div>
+       
+        <div class="modal-footer" >
+          <button type="button" class="success" data-dismiss="modal" aria-hidden="true" (click)="exit(bet_id.value)">Exit</button>
+          <button type="button" class="danger"  data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--purchase popup--> 
+<div class="modal fade" id="purchase" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Purchase Tokens</h4>         
+        </div>
+        
+        <div class="modal-body">
+            <input type="text" placeholder="Enter Number of Tokens" #num>
+        </div>
+       
+        <div class="modal-footer">
+          <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="gt(num.value)" style="background:#03A9F4" >Purchase</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!--sell token popup--> 
+   <div class="modal fade" id="selltoken" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Exchange Token</h4>         
+          </div>
+          
+          <div class="modal-body">
+              <input type="text" placeholder="Enter Number of Tokens" #selltk>
+          </div>
+         
+          <div class="modal-footer">
+            <button type="button" class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="et(selltk.value)" style="background:#03A9F4">Exchange</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ <br>
+<!--unbeted table-->
+<div class="container" style="height:400px;width:1230px;">
+    <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+     <thead>
+       <tr style="background:white">
+         <th>Bet Id</th>
+         <th>Stock Name</th>
+         <th>Strike Price</th>
+         <th>Expiry time</th>
+         <th>Selected option</th>
+         <th>Betted ether</th>
+         <th>Betted token</th>
+         <th>Result</th>
+          </tr>
+     </thead>
+     <tbody id="user_bet_list">
+        <tr *ngFor="let game of user_game" [ngSwitch]="game.status">
+            <td>{{ game.id }}</td><td>{{ game.stock_name }}</td>
+            <td>{{ game.strike_price }}</td>
+            <td>{{ game.expiry_time }}</td>
+            <td>{{ game.option }}</td>                                    
+            <td>{{ game.eth_value }}</td>
+            <td>{{ game.token_value }}</td>
+            <td *ngSwitchCase="0">Pending</td>
+            <td *ngSwitchCase="10">Low</td>
+            <td *ngSwitchCase="11">High</td>
+            <td *ngSwitchCase="12">Draw</td>
+         </tr>
+     </tbody>
+   </table>
+ </div>
+<br>
+<!--Betted table-->
+<div class="container" style="height:400px;width:1230px;">
+    <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+     <thead>
+       <tr style="background:white">
+        <th>Bet Id</th>
+        <th>Stock Name</th>
+        <th>Strike Price</th>
+        <th>Expiry Time</th>
+        <th>No.of.Bets</th>
+        <th>Ether Collected</th>
+        <th>Tokens Collected</th> 
+        <th>Result</th>  
+         <th> </th>
+         <th> </th>
+         <th> </th>
+       </tr>
+     </thead>
+     <tbody id="total_bet_list">
+        <tr *ngFor="let games of total_game" [ngSwitch]="games.status">
+            <td>{{ games.id }}</td>
+            <td>{{ games.stock_name }}</td>
+            <td>{{ games.strike_price }}</td>
+            <td>{{ games.expiry_time }}</td>
+            <td>{{ games.no_of_bets }}</td>
+            <td>{{ games.eth_value }}</td>
+            <td>{{ games.token_value }}</td>
+            <td *ngSwitchCase="0">Pending</td>
+            <td *ngSwitchCase="10">Low</td>
+            <td *ngSwitchCase="11">High</td>
+            <td *ngSwitchCase="12">Draw</td>
+         </tr>
+     </tbody>
+   </table>
+ </div> 
+ <br>
+</body>
+</html>
+<ngx-spinner></ngx-spinner>
+<ngx-spinner
+     bdColor="rgba(51,51,51,0.8)"
+     size="medium"
+     color="#fff"
+     loadingText="Loading..."
+     type="ball-scale-multiple">
+</ngx-spinner>

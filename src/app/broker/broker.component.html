@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body style="background-color:rgb(240, 240, 240);" >
+<br>
+<div>
+    <div class="container " style="background:white;height:200px;width:3000px;">
+    <nav class=" navbar"><br>
+     <div >
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+
+             <!-- <!-- <label for="account"><h4>Ether Balance:</h4><input type="text" class="form-control" id="balance1" value={{bal}} readonly/></label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+             <!-- <label for="account1"><h4>Ether Balance:</h4><input type="text" class="form-control" id="broker_bal"  readonly/></label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> 
+             <label for="account"><h4>Staked Ether:</h4><input type="text" class="form-control" id="ether_bal"  value="{{ ether }}"  readonly/></label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+             <label for="account1"><h4>Staked Token:</h4><input type="text" class="form-control" id="token_bal"  value="{{ token }}"  readonly/></label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#dereg" style="padding: 8px 50px" class="button1 circle  zoom" >De-Register</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <br>
+      
+             <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#purchase" style="padding: 8px 30px" class="button1 zoom"   >Purchase Token</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#selltoken" style="padding: 8px 20px" class="button1 zoom"  >Convert Token to Ether</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#myModal" style="padding: 8px 50px" class="button1 circle  zoom" >Create Bet</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#addether" style="padding: 8px 50px" class="button1 circle  zoom" >Stake Ether</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#addtoken" style="padding: 8px 50px" class="button1 circle  zoom" >Stake Token</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#withdrawether" style="padding: 8px 50px" class="button1 circle  zoom" > Withdraw ether form Stake </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#withdrawtoken" style="padding: 8px 50px" class="button1 circle  zoom" >Withdraw token form Stake </Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            
+
+            </div>   
+   </nav>
+ </div> 
+  
+</div>
+
+<br>  
+
+<div class="container col-5" style="height:550px;width:1230px;">
+    <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+     <thead >
+       <tr style="background:white">
+         <th>Bet Id</th>
+         <th>Stock Name</th>
+         <th>Strike Price</th>
+         <th>Expiry Time</th>
+         <th>No.of.Bets</th>
+         <th>Ether Collected</th>
+         <th>Tokens Collected</th> 
+         <th>Bet Status</th>  
+       </tr>
+     </thead>
+     <tbody id="broker_list">
+        <tr *ngFor="let game of total_game" [ngSwitch]="game.status">
+            <td>{{ game.id }}</td>
+            <td>{{ game.stock_name }}</td>
+            <td>{{ game.strike_price }}</td>
+            <td>{{ game.expiry_time }}</td>
+            <td>{{ game.no_of_bets }}</td>
+            <td>{{ game.eth_value }}</td>
+            <td>{{ game.token_value }}</td>
+            <td *ngSwitchCase="0">Pending</td>
+            <td *ngSwitchCase="10">Low</td>
+            <td *ngSwitchCase="11">High</td>
+            <td *ngSwitchCase="12">Draw</td>
+         </tr>
+     </tbody>
+   </table>
+ </div>
+ <br>
+
+ <div class="container">
+    <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">      
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create Betting</h4>
+          </div>
+
+          <form class="modal-content"> 
+          <div class="modal-body">
+                <table>
+                        <thead>
+                          <tr>
+                           <td><input type="text"  #a placeholder="Enter stock name" name="" required></td>
+                           <td></td>
+                           </tr>
+                           <tr>
+                            <td><input type="text" #b placeholder="Enter strike price" name="" required></td>
+                          </tr>
+                          <tr>
+                              <td><label for="etime">Select Expiry Time : </label>&nbsp;&nbsp;<p-calendar  [(ngModel)]="date1"  readonlyInput="true" showTime="true" hourFormat="12" dateFormat="dd/mm/yy" [ngModelOptions]="{standalone: true}"></p-calendar> {{date1|date}}</td><br>
+                          </tr>  
+                                                   </thead>
+                        </table>
+             </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" aria-hidden="true"  class=" zoom" (click)="cb(a.value,b.value)">Create Bet</button>
+            <button type="button" style="background-color:hsl(0, 80%, 50%)" class="cancelbtn zoom" data-dismiss="modal">Close</button>
+        
+           </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+   <br>
+   <!--Deregister-->
+   <div class="modal fade" id="dereg" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">De-Register From Site</h4>         
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="deregister()" style="background:#03A9F4" >De-register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!--purchase popup--> 
+<div class="modal fade" id="purchase" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Purchase Tokens</h4>         
+        </div>
+        
+        <div class="modal-body">
+            <input type="text" placeholder="Enter number of Tokens" #num>
+        </div>
+       
+        <div class="modal-footer">
+          <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="gt(num.value)" style="background:#03A9F4" >Purchase</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!--sell token popup--> 
+   <div class="modal fade" id="selltoken" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Exchange Token</h4>         
+          </div>
+          
+          <div class="modal-body">
+              <input type="text" placeholder="Enter Number of Tokens" #selltok>
+          </div>
+         
+          <div class="modal-footer">
+            <button type="button" class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="et(selltok.value)"  style="background:#03A9F4" >Exchange</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--adding stake ether--> 
+<div class="modal fade" id="addether" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Adding Stake </h4>         
+      </div>
+      
+      <div class="modal-body">
+          <input type="text" placeholder="Enter number of ether" #noe>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="add_eth(noe.value)" style="background:#03A9F4">Stake</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--adding stake token--> 
+<div class="modal fade" id="addtoken" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Adding Token </h4>         
+      </div>
+      
+      <div class="modal-body">
+          <input type="text" placeholder="Enter number of tokens" #tkns>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="add_tkn(tkns.value)" style="background:#03A9F4">Stake</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!--withdraw ether popup--> 
+ <div class="modal fade" id="withdrawether" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Withdraw Ether From Your Stake </h4>         
+      </div>
+      
+      <div class="modal-body">
+          <input type="text" placeholder="Enter number of ether to withdraw" #withdraw_eth>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="withdraw_ether(withdraw_eth.value)" style="background:#03A9F4" >Withdraw</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--withdraw token popup--> 
+<div class="modal fade" id="withdrawtoken" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Withdraw Token From Your Stake </h4>         
+      </div>
+      
+      <div class="modal-body">
+          <input type="text" placeholder="Enter number of token to withdraw" #withdraw_tok>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button"class="butn zoom" data-dismiss="modal" aria-hidden="true" (click)="withdraw_token(withdraw_tok.value)" style="background:#03A9F4" >withdraw</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>     
+</html>
+<ngx-spinner></ngx-spinner>
+<ngx-spinner
+     bdColor="rgba(51,51,51,0.8)"
+     size="medium"
+     color="#fff"
+     loadingText="Loading..."
+     type="ball-scale-multiple">
+</ngx-spinner>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+#div1 {
+  font-size:48px;
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid white;
+  border-color: white blue;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+  </style>
+</head>
+<body style="background-color:rgb(240, 240, 240);">
+    <ngx-spinner></ngx-spinner>
+    <ngx-spinner
+     bdColor="rgba(51,51,51,0.8)"
+     size="medium"
+     color="#fff"
+     loadingText="Loading..."
+     type="ball-scale-multiple">
+</ngx-spinner>
+<br>
+<div>
+    <div class="container" style="background:white;height:100px;width:1200px;">
+    <nav class=" navbar container" ><br>
+     <div>
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             <!-- <!-- <i class="fa fa-bitcoin" style="font-size:36px"></i> -->
+             <div >
+         
+             </div>
+             <!-- <label for="account"><h4>Contract's Ether Balance:</h4><input type="text" class="form-control" id="balance1" readonly/></label>             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;            
+             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             <label for="account1"><h4>Contract's Token Balance:</h4><input type="text" class="form-control" id="brokertoken" readonly/></label>  &nbsp;&nbsp;&nbsp; &nbsp;      -->
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+             <Button type="button"  value="Create Bet" data-toggle="modal"  data-target="#betting" style="padding: 8px 30px" class="button1 zoom" >Finalize</Button>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br>
+
+     </div>   
+   </nav>
+ </div>  
+</div>
+<br>  
+<div id="div1" class="fa"></div>
+<div class="modal fade" id="betting" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-header" style="background: #1affff">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Result</h4>         
+        </div>
+        
+        <div class="modal-body" >
+          <p >Finalize the Result of a Bet</p><br>
+        
+          <!-- <select id="myselect">
+            <option value="0">Ether</option>
+            <option value="1">Token</option>
+        </select> -->
+        <br><br>
+        <input type="text" class="shadow" placeholder="Enter game id" #bet_id>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select #resultoption>
+            <option value="10">Low</option>
+            <option value="11">High</option>
+            <option value="12">Draw</option>
+        </select>
+        <br>
+        <br>
+        </div>
+       
+        <div class="modal-footer" >
+          <button type="button" class="success" data-dismiss="modal" aria-hidden="true" (click)="result(bet_id.value,resultoption.value)">Finalize</button>
+          <button type="button" class="danger"  data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <script>
+    
+    </script>
+
+    <!--Betted table-->
+<div class="container" style="height:500px;width:1230px;">
+    <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+     <thead>
+       <tr style="background:white">
+        <th>Bet Id</th>
+        <th>Stock Name</th>
+        <th>Strike Price</th>
+        <th>Expiry Time</th>
+        <th>No.of.Bets</th>
+        <th>Ether Collected</th>
+        <th>Tokens Collected</th> 
+        <th>Bet Status</th>  
+         <th> </th>
+         <th> </th>
+         <th> </th>
+       </tr>
+     </thead>
+     <tbody id="total_bet_list">
+        <tr *ngFor="let game of total_game" [ngSwitch]="game.status">
+          <td>{{ game.id }}</td><td>{{ game.stock_name }}</td>
+          <td>{{ game.strike_price }}</td>
+          <td>{{ game.expiry_time }}</td>
+          <td>{{ game.no_of_bets }}</td>
+          <td>{{ game.eth_value }}</td>
+          <td>{{ game.token_value }}</td>
+          <td *ngSwitchCase="0">Pending</td>
+          <td *ngSwitchCase="10">Low</td>
+          <td *ngSwitchCase="11">High</td>
+          <td *ngSwitchCase="12">Draw</td>
+      </tr>
+     </tbody>
+   </table>
+
+ </div>
+<br>
+
+</body>
+</html> 

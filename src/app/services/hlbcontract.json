@@ -1,0 +1,464 @@
+[
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "add_broker",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "token_to_stake",
+				"type": "uint256"
+			}
+		],
+		"name": "add_stake",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "result_options",
+				"type": "uint256"
+			}
+		],
+		"name": "admin_setting_result_and_distribute_money",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_bet_tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "bet",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_choice",
+				"type": "uint256"
+			},
+			{
+				"name": "_bet_tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "betting",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "broker_de_registration",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_stock_name",
+				"type": "bytes"
+			},
+			{
+				"name": "_strike_price",
+				"type": "uint256"
+			},
+			{
+				"name": "_expiry_time",
+				"type": "uint256"
+			}
+		],
+		"name": "broker_set_game",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_what",
+				"type": "bool"
+			},
+			{
+				"name": "amount_to_withdraw",
+				"type": "uint256"
+			}
+		],
+		"name": "broker_withdraw_from_stake",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_what",
+				"type": "bool"
+			},
+			{
+				"name": "_howmuch",
+				"type": "uint256"
+			}
+		],
+		"name": "decrease",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_bet_tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "increase",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "tokens_to_exchange_in_wei",
+				"type": "uint256"
+			}
+		],
+		"name": "token_transaction",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			}
+		],
+		"name": "trader_cancel_bet_and_widthdraw",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_sender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_receiver",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_transfer_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer_amount",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "betting_map",
+		"outputs": [
+			{
+				"name": "option",
+				"type": "bool"
+			},
+			{
+				"name": "bet_amount",
+				"type": "uint256"
+			},
+			{
+				"name": "betted_tokens",
+				"type": "uint256"
+			},
+			{
+				"name": "is_exit",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "broker_map",
+		"outputs": [
+			{
+				"name": "stake_amount",
+				"type": "uint256"
+			},
+			{
+				"name": "stake_token",
+				"type": "uint256"
+			},
+			{
+				"name": "is_broker",
+				"type": "bool"
+			},
+			{
+				"name": "active_offerings",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "game_id",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "game_set_map",
+		"outputs": [
+			{
+				"name": "stock_name",
+				"type": "bytes"
+			},
+			{
+				"name": "strike_price",
+				"type": "uint256"
+			},
+			{
+				"name": "expiry_time",
+				"type": "uint256"
+			},
+			{
+				"name": "bet_creator",
+				"type": "address"
+			},
+			{
+				"name": "result_map",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			},
+			{
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "get_game_set_map_value",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_game_id",
+				"type": "uint256"
+			}
+		],
+		"name": "length_of_game_set_map",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

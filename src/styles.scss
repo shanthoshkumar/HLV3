@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar-default  {
+    color: black;
+    background-color: white;
+    height: 100%; 
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 3px;
+  width: auto;
+}
+.header th {
+       height: 2px;
+       line-height: 2px;
+       width:1px;
+    }
+    .btn {
+    border: none;
+    outline: none;
+    padding: 0px 0px;
+    background-color:rgb(18, 149, 229);
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn1{
+    border: none;
+    outline: none;
+    padding: 0px 0px;
+    background-color:rgb(240, 240, 240);
+    color: black;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+a{
+  color:black;
+}
+.navbar-default .navbar-nav > .active > a, 
+  .navbar-default .navbar-nav > .active > a:hover, 
+  .navbar-default .navbar-nav > .active > a:focus {
+          color: white;
+    background: rgb(18, 149, 229);
+   }
